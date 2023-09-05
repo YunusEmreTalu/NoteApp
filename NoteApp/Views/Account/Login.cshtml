@@ -1,0 +1,24 @@
+﻿@model NoteApp.Models.User
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/css/Login.css" />
+
+
+<form asp-action="Login" method="post">
+    <h2>Login</h2>
+    <div>
+        <label asp-for="UserName">Username:</label>
+        <input type="text" asp-for="UserName" required>
+        <span asp-validation-for="UserName"></span>
+    </div>
+    <div>
+        <label asp-for="Password">Password:</label>
+        <input type="password" asp-for="Password" required>
+        <span asp-validation-for="Password"></span>
+    </div>
+    <button type="submit">Login</button>
+    <a href="/Account/Register">Register</a>
+</form>
+

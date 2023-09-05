@@ -1,0 +1,25 @@
+﻿@model NoteApp.Models.Note
+
+<h2>Note Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <td>@Model.Title</td>
+    </tr>
+    <tr>
+        <th>Content</th>
+        <td>@Model.Content</td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>@Model.CreatedAt</td>
+    </tr>
+</table>
+
+@if (Model.Image != null && Model.Image.Data != null)
+{
+    <h3>Image</h3>
+    <img src="@Url.Action("GetImage", "Note", 
+    new { id = Model.Image.Id })" alt="Note Image" class="img-fluid" />
+}

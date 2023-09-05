@@ -1,0 +1,35 @@
+﻿@model List<Note>
+@using NoteApp.Views.Note.Helpers
+
+
+<h2>My Notes</h2>
+
+<a asp-action="Create" class="btn btn-primary">Add Note</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created At</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+            <tr>
+                <td>@TruncateStringHelper.TruncateString(note.Title, 20)</td>
+                <td>@TruncateStringHelper.TruncateString(note.Content, 100)</td>
+                <td>@note.CreatedAt</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@note.Id" class="btn btn-primary">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@note.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this note?')">Delete</button>
+                    </form>
+                    <a asp-action="View" asp-route-id="@note.Id" class="btn btn-info">View</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
